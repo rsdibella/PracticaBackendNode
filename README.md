@@ -1,19 +1,19 @@
-### Práctica Backend con Node
+## Práctica Backend con Node
 
-##### Hecho por ahora:
+#### Hecho por ahora:
 
 <li>Creación de la app API</li>
-<li>Añadida función de añadir anuncios: para ello hay que usar el post a través de postman de la siguiente manera:
-        {
+<li>Añadida función de añadir anuncios: para ello hay que usar el post a través de postman de la siguiente manera:</li>
+        <p>{
         "name": "nombre ejemplo",
         "sell": true/false,
         "price": número,
         "photo": "algo.jpg",
         "tags": [ "ejemplo tag", "ejemplo tag 2"]
         }
-</li>
-<li>Añadida función para consultar todos los anuncios a través de un get en postman. Devolvería de la siguiente manera:
-       [
+    </p>
+<li>Añadida función para consultar todos los anuncios a través de un get en postman. Devolvería de la siguiente manera:</li>
+       <p>[
         {
             "name": "Bicicleta",
             "sell": true,
@@ -35,13 +35,14 @@
                 "wheels"
             ]
         }
-        ] 
-</li>
+        ]
+    </p> 
 
-<p><b></b>Para que funcione es importante hacer npm install, dado que en los commits se han evitado algunas carpetas pesadas</p>
+
+<p><b>!!!</b>Para que funcione es importante hacer npm install, dado que en los commits se han evitado algunas carpetas pesadas</p>
 <p>** Para comprobar la base de datos utilizo MongoDB Compass</p>
 
-##### Queda por hacer:
+#### Queda por hacer:
 
 <li>Hacer un script de inicialización de la base de datos.</li>
 <li>Mejorar el endpoint de la lista de anuncios poniendo filtros, paginación, etc. (¿en una nueva versión?)</li>
