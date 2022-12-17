@@ -38,6 +38,7 @@
         ] 
 </li>
 
+<p><b></b>Para que funcione es importante hacer npm install, dado que en los commits se han evitado algunas carpetas pesadas</p>
 <p>** Para comprobar la base de datos utilizo MongoDB Compass</p>
 
 ##### Queda por hacer:
