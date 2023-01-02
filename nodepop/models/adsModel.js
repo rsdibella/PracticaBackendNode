@@ -17,10 +17,6 @@ class ad {
     this.tags = tags;
   }
 
-  getAd() {
-    return { nombre: this.name, venta: this.sell };
-  }
-
   async getAllAds() {
     const getAds = mongoose.model("Ad", adSchema);
 
@@ -51,6 +47,39 @@ class ad {
       return { message: "error!", details: err };
     }
   }
+
+  async filterAds (filter) {
+    //const query = ads.find({});
+    //query.sort = filter.name;
+    const getAds = mongoose.model("Ad", adSchema);
+
+    let listOfAds =[];
+
+    for await(let item of getAds.find(filter))
+      listOfAds.push(new ad(item.name, item.sell, item.price, item.photo, item.tags));
+    return listOfAds;
+  }
+
+  //Cosas nuevas sin probar:
+  //Lista de tags:
+  async getAllTags() {
+    const getAds = mongoose.model("Ad", adSchema);
+
+    let listOfTags =[];
+
+    for await(let item of getAds.find()){
+      for (let index in item.tags) {
+        if (listOfTags.includes(item.tags[index]) === false){
+          listOfTags.push(item.tags[index]);
+        }
+      }
+    }
+    return listOfTags;
+  }
+
+
+
+
 }
 
 module.exports = ad;
