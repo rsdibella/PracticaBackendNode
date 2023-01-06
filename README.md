@@ -34,7 +34,9 @@
 #### POST de Anuncios
 
 <li> Para ello se ha usado el programa  <a href="https://www.postman.com/downloads/"> Postman</a> </li>
-<li> Utilizandolo hay que introducir la url de la API:  <em>localhost:3000/V1/ads</em> </li>
+<li> Utilizandolo hay que introducir la url de la API: </li>
+        
+        localhost:3000/V1/ads
 <li> Elegir las opciones <b>POST</b>, <b>raw</b> y <b>JSON</b>. Luego introducir los datos del anuncio de la siguente manera: </li>
 
         
