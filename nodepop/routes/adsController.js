@@ -23,7 +23,7 @@ router.get("/", async function (req, res, next) {
   var ad = new ads();
 
   const page = req.query.page || 1;
-  const pageLimit = 10;
+  const pageLimit = 2;
 
   if(Object.keys(req.query).length === 0) {
     return res.send(await ad.getAllAds(pageLimit, page));
