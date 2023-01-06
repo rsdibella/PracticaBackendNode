@@ -1,3 +1,5 @@
 nodepop/node_modules
 nodepop/bin
 nodepop/package-lock.json
+package-lock.json
+.vscode
