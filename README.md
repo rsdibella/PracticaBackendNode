@@ -1,33 +1,79 @@
-## Práctica Backend con Node
+# Práctica Backend con Node
 
-#### Hecho por ahora:
+## Instalación
 
-<li>Creación de la app API</li>
-<li>Añadida función de añadir anuncios: para ello hay que usar el post a través de postman de la siguiente manera:</li>
-> {
->   "name": "nombre ejemplo",
->    "sell": true/false,
->    "price": número,
->    "photo": "algo.jpg",
->    "tags": [ "ejemplo tag", "ejemplo tag 2"]
-> }
+#### Requisitos previos:
+<li> Instalar <a href="https://nodejs.org/en/download/">Node</a> </li>
+<li> Instalar <a href="https://www.mongodb.com/try">MongoDB</a> </li>
 
-<li>Añadida función para consultar todos los anuncios. Entrar a *http://localhost:3000/V1/ads/*. Devolvería los anuncios de la siguiente manera:</li>
-> [{"name":"taza","sell":true,"price":4.95,"photo":"taza.jpg","tags":["ceramica","beber","desayuno","cafe","charmander"]},{"name":"peluche","sell":true,"price":19.95,"photo":"peluche.jpg","tags":["achuchable","blandito","charmander"]},{"name":"reloj","sell":true,"price":14.95,"photo":"reloj.jpg","tags":["hora","despertador","lampara","charmander"]},{"name":"mochila","sell":true,"price":29.95,"photo":"mochila.jpg","tags":["bolsa","viaje","bolsillos","charmander"]}]
+#### Instalación e inicio:
 
-<li>Añadida función para consultar una lista de todos los tags. Entrar a *http://localhost:3000/V1/ads/tags*. Devolvería los tags de la siguiente manera:</li>
-> ["ceramica","beber","desayuno","cafe","charmander","achuchable","blandito","hora","despertador","lampara","bolsa","viaje","bolsillos"]
+<ul>1. Descargar o clonar el repositorio </ul>
+<ul>2. Acceder al repositorio a través del terminal </ul>
+        
+        cd PracticaBackendNode
+        cd nodepop
 
-<li>Añadida función para buscar en base a las propiedades de cada anuncio. Entrar a *http://localhost:3000/V1/ads/?propiedad=ejemplo*.</li>
+<ul>3. Instalar </ul>
+        
+        npm install
+        
+        
+<ul>4. Preparar el entorno de la base de datos </ul>
+        
+        node ./init-db.js
 
-<p>*!!!*Para que funcione es importante hacer npm install, dado que en los commits se han evitado algunas carpetas pesadas</p>
+<ul>5. Poner la API en funcionamiento </ul>
+        
+        npm start
+        
+        
+## Operaciones:
 
-<p>** Para comprobar la base de datos utilizo MongoDB Compass</p>
+#### POST de Anuncios
 
-#### Queda por hacer:
+<li> Para ello se ha usado el programa  <a href="https://www.postman.com/downloads/"> postman</a> </li>
+<li> Utilizandolo hay que introducir la url de la API:  <em>localhost:3000/V1/ads</em> </li>
+<li> Elegir las opciones <b>POST</b>, <b>raw</b> y <b>JSON</b>. Luego introducir los datos del anuncio de la siguente manera: </li>
 
-<li>Hacer un script de inicialización de la base de datos.</li>
-<li>Redactar mejor como funciona la busqueda "?="</li>
-<li>Revisar como añadir imagenes</li>
-<li>Revisar la calidad de código</li>
+        
+        { 
+          "name": "nombre ejemplo",
+          "sell": true/false,
+          "price": número,
+          "photo": "algo.jpg",
+          "tags": [ "ejemplo tag", "ejemplo tag 2"]
+         }
+
+<li> Al añadir anuncios hay que tener en cuenta las siguientes reglas, si no será considerado un modelo de anuncio no válido:
+<ul>1. Debe tener un nombre</ul>
+<ul>2. La venda debe ser un booleano</ul>
+<ul>3. El precio no puede ser negativo</ul>
+<ul>4. La foto no es obligatoria, puede dejarse el campo en blanco</ul>
+<ul>5. Los tags deben estar limitados a los existentes en la siguiente lista: ["work", "lifestyle", "motor", "mobile"]</ul>
+</li>
+
+#### Consultarc(GET) anuncios:
+
+<li> Para consultar todos los anuncios sin ningun tipo de filtro, acceder a <em>localhost:3000/V1/ads</em></li>
+<li> Se pueden filtrar los anuncios, partiendo de la dirección anterior, de la siguiente manera:
+<ul>1. Por su nombre (o el principio del nombre). Se tiene en cuenta las tilde. Por ejemplo:</ul>
+        
+        /?name=bici
+<ul>2. Por su estado de venta (true es que se vende, false que se compra) Por ejemplo:</ul>
+        
+        /?sell=true
+<ul>3. Por su precio. Por ejemplo:</ul>
+        
+        /?price=200         //Busca el precio concreto
+        /?price=-200        //Busca valores inferiores al precio
+        /?price=200-        //Busca valores superiores al precio
+        /?price=200-1000    //Busca valores entre ambos precios
+</li>
+<ul>3. Por tags. Si se añaden varios tags se buscarán los productos que tengan uno <strong>o</strong> el otro. Por ejemplo:</ul>
+        
+        /?tags=mobile;work
+<li> Para consultar la lista de los tags presentes en los anuncios acceder a <em>localhost:3000/V1/ads/tags</em></li>
+
+<li> Para visualizar imagenes acceder a <em>localhost:3000/V1/ads/images/anuncios/nombreimagen.jpg</em>. Sólo hay disponibles las imagenes de los anuncios presentes en la base de datos inicial</li>
 
