@@ -50,7 +50,7 @@ class ad {
       return false;
     }
     // Check sell
-    if (typeof this.sale !== "boolean") {
+    if ((this.sale === true || this.sale === false)) {
       return false
     }
     return true
