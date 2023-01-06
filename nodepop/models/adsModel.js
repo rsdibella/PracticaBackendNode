@@ -79,8 +79,6 @@ class ad {
   }
 
   async filterAds(filter) {
-    //const query = ads.find({});
-    //query.sort = filter.name;
     const getAds = mongoose.model("Ad", adSchema);
 
     let listOfAds = [];
@@ -92,8 +90,6 @@ class ad {
     return listOfAds;
   }
 
-  //Cosas nuevas sin probar:
-  //Lista de tags:
   async getAllTags() {
     const getAds = mongoose.model("Ad", adSchema);
 
