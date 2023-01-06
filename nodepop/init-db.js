@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Connect to the MongoDB database
 mongoose.connect("mongodb://127.0.0.1:27017/adsDatabase", {
@@ -17,6 +17,14 @@ const adSchema = new mongoose.Schema({
 // Create the Ad model
 const Ad = mongoose.model("Ad", adSchema);
 
+Ad.deleteMany({}, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("All documents deleted from collection.");
+  }
+});
+
 // Insert a few ads into the database
 Ad.create([
   { name: "Bicicleta",
@@ -24,11 +32,6 @@ Ad.create([
     price: 230.95,
     photo: "bici.jpg",
     tags: ["lifestyle", "motor"], },
-  { name: "Móvil",
-    sell: true,
-    price: 125,
-    photo: "movil.jpg",
-    tags: ["mobile", "lifestyle"], },
     { name: "Ordenador",
     sell: true,
     price: 675.24,
