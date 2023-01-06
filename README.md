@@ -26,14 +26,17 @@
 <ul>5. Poner la API en funcionamiento </ul>
         
         npm start
-        
-        
+
+<ul>6. Para cerrarla pulsar CTRL + C y después S y enter</ul>
+
 ## Operaciones:
 
 #### POST de Anuncios
 
-<li> Para ello se ha usado el programa  <a href="https://www.postman.com/downloads/"> postman</a> </li>
-<li> Utilizandolo hay que introducir la url de la API:  <em>localhost:3000/V1/ads</em> </li>
+<li> Para ello se ha usado el programa  <a href="https://www.postman.com/downloads/"> Postman</a> </li>
+<li> Utilizandolo hay que introducir la url de la API: </li>
+        
+        localhost:3000/V1/ads
 <li> Elegir las opciones <b>POST</b>, <b>raw</b> y <b>JSON</b>. Luego introducir los datos del anuncio de la siguente manera: </li>
 
         
@@ -53,9 +56,14 @@
 <ul>5. Los tags deben estar limitados a los existentes en la siguiente lista: ["work", "lifestyle", "motor", "mobile"]</ul>
 </li>
 
-#### Consultarc(GET) anuncios:
+#### Consultar (GET) anuncios:
 
-<li> Para consultar todos los anuncios sin ningun tipo de filtro, acceder a <em>localhost:3000/V1/ads</em></li>
+<li> Para consultar todos los anuncios sin ningun tipo de filtro, acceder a: </li>
+
+        localhost:3000/V1/ads
+<li> Los anuncios se muestran dos por página según el orden alfabético del nombre, mostrando la primera página de forma predeterminada. Para navegar a la siguiente página se debe añadir lo siguiente a la dirección anterior:</li>
+        
+        /?page=2
 <li> Se pueden filtrar los anuncios, partiendo de la dirección anterior, de la siguiente manera:
 <ul>1. Por su nombre (o el principio del nombre). Se tiene en cuenta las tilde. Por ejemplo:</ul>
         
@@ -65,15 +73,26 @@
         /?sell=true
 <ul>3. Por su precio. Por ejemplo:</ul>
         
-        /?price=200         //Busca el precio concreto
-        /?price=-200        //Busca valores inferiores al precio
-        /?price=200-        //Busca valores superiores al precio
-        /?price=200-1000    //Busca valores entre ambos precios
+        /?price=200         // Busca el precio concreto
+        /?price=-200        // Busca valores inferiores al precio
+        /?price=200-        // Busca valores superiores al precio
+        /?price=200-1000    // Busca valores entre ambos precios
 </li>
-<ul>3. Por tags. Si se añaden varios tags se buscarán los productos que tengan uno <strong>o</strong> el otro. Por ejemplo:</ul>
+<ul>4. Por tags. Si se añaden varios tags se buscarán los productos que tengan uno <strong>y / o</strong> el otro. Por ejemplo:</ul>
         
         /?tags=mobile;work
-<li> Para consultar la lista de los tags presentes en los anuncios acceder a <em>localhost:3000/V1/ads/tags</em></li>
+        
+<p>* Para realizar una búsqueda múltiple o navegar entre las páginas de una búsqueda se debe añadir el carácter <b>&</b> entre requisitos. Por ejemplo:
 
-<li> Para visualizar imagenes acceder a <em>localhost:3000/V1/ads/images/anuncios/nombreimagen.jpg</em>. Sólo hay disponibles las imagenes de los anuncios presentes en la base de datos inicial</li>
+        /?price=10-&tags=lifestyle&page=2
+</p>
+<li> Para consultar la lista de los tags presentes en los anuncios acceder a:</li>
+        
+        localhost:3000/V1/ads/tags
 
+<li> También se pueden visualizar las fotos de los anuncios pero hay que tener en cuenta que sólo hay disponibles las imagenes de los anuncios presentes en la base de datos inicial. Para visualizar imagenes acceder a: </li>
+        
+        localhost:3000/V1/ads/images/anuncios/nombreimagen.jpg   // nombreimagen sería el nombre del producto, por ejemplo:        
+        localhost:3000/V1/ads/images/anuncios/tablet.jpg   
+
+        
