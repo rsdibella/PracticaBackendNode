@@ -3,3 +3,5 @@ nodepop/bin
 nodepop/package-lock.json
 package-lock.json
 .vscode
+nodepop/models/user.js
+nodepop/routes/users.js

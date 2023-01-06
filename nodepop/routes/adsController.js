@@ -21,18 +21,18 @@ router.post("/", async function(req, res, next) {
 
 router.get("/", async function (req, res, next) {
   var ad = new ads();
+
+  const page = req.query.page || 1;
+  const pageLimit = 10;
+
   if(Object.keys(req.query).length === 0) {
-    return res.send(await ad.getAllAds());
+    return res.send(await ad.getAllAds(pageLimit, page));
   }
     else {
     const tags = req.query.tags;
     const sell = req.query.sell;
     const price = req.query.price;
     const name = req.query.name;
-
-    const limit = parseInt(req.query.limit);
-    const sort = req.query.sort;
-    const start = parseInt(req.query.start);
 
     const filter = {};
 
@@ -71,7 +71,7 @@ router.get("/", async function (req, res, next) {
       filter.name = new RegExp("^" + name, "i");
     }
     
-    return res.send(await ad.filterAds(filter));
+    return res.send(await ad.filterAds(filter, pageLimit, page));
   }
   
 });

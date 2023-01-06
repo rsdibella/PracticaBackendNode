@@ -18,12 +18,12 @@ class ad {
     this.tags = tags;
   }
 
-  async getAllAds() {
+  async getAllAds(pageLimit, page) {
     const getAds = mongoose.model("Ad", adSchema);
 
     let listOfAds = [];
 
-    for await (let item of getAds.find())
+    for await (let item of getAds.find().sort({["name"]: 1}).skip((pageLimit*page)-pageLimit).limit(pageLimit))
       listOfAds.push(
         new ad(item.name, item.sell, item.price, item.photo, item.tags)
       );
@@ -78,12 +78,12 @@ class ad {
     }
   }
 
-  async filterAds(filter) {
+  async filterAds(filter, pageLimit, page) {
     const getAds = mongoose.model("Ad", adSchema);
 
     let listOfAds = [];
 
-    for await (let item of getAds.find(filter))
+    for await (let item of getAds.find(filter).sort({["name"]: 1}).skip((pageLimit*page)-pageLimit).limit(pageLimit))
       listOfAds.push(
         new ad(item.name, item.sell, item.price, item.photo, item.tags)
       );
