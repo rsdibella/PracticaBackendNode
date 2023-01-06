@@ -9,6 +9,8 @@ var adSchema = mongoose.Schema({
   tags: [String],
 });
 
+adSchema.index({ name: 1, sell: 1, price: 1, tags: 1 });
+
 class ad {
   constructor(name, sell, price, photo, tags) {
     this.name = name;

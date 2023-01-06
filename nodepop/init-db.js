@@ -14,6 +14,8 @@ const adSchema = new mongoose.Schema({
     tags: [String],
 });
 
+adSchema.index({ name: 1, sell: 1, price: 1, tags: 1 });
+
 // Create the Ad model
 const Ad = mongoose.model("Ad", adSchema);
 
