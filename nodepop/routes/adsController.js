@@ -1,11 +1,17 @@
 const ads = require('../models/adsModel');
 var express = require('express');
 var router = express.Router();
-
+const path = require("path")
 
 router.get('/tags',async function(req, res, next) {
   var ad = new ads();
   res.send(await ad.getAllTags())
+});
+
+router.get('/images/anuncios/:filename',async function(req, res, next) {
+  const filename = req.params.filename;
+  res.type(path.extname(filename));
+  res.sendFile(path.join(__dirname, "../public/images", filename)) 
 });
 
 router.post('/', async function(req, res, next) {
