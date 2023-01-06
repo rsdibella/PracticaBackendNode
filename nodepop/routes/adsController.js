@@ -13,7 +13,6 @@ router.post('/', async function(req, res, next) {
   return res.send(await ad.createAd());
 });
 
-// Filtros!
 router.get('/', async function (req, res, next) {
   var ad = new ads();
   if(Object.keys(req.query).length === 0) {
@@ -69,11 +68,6 @@ router.get('/', async function (req, res, next) {
     return res.send(await ad.filterAds(filter));
   }
   
-
-
-
-
-
 });
 
   
